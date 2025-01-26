@@ -1,2 +1,2 @@
-tar.gz: . name=%name base=avahi-tqt
+tar.gz: . name=avahi-tqt base=avahi-tqt
 spec: avahi-tqt.spec
