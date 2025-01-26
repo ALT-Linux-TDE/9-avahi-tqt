@@ -40,7 +40,7 @@ License: LGPL-2.0+
 #Vendor:		Trinity Project
 #Packager:	Francois Andriot <francois.andriot@free.fr>
 
-Source: avahi-tqt-14.1.3.tar.gz
+Source0: avahi-tqt.tar.gz
 
 BuildRequires: libtqt4-devel >= %tde_version
 
@@ -202,7 +202,8 @@ into a TQt main loop application.
 
 %prep
 #%setup -n %name-%tde_version%{?preversion:~%preversion}
-%setup -q avahi-tqt
+%setup -q %name
+
 
 %build
 unset QTDIR QTINC QTLIB
