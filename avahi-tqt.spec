@@ -29,8 +29,8 @@
 
 Name: tde-avahi-tqt
 #Epoch: %tde_epoch
-Version: 0.6.30
-Release: 14.1.3-alt1
+Version: 14.1.3
+Release: alt1
 Summary: Avahi TQt integration library
 Group: System/Libraries
 Url: http://www.trinitydesktop.org/
