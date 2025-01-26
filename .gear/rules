@@ -1,1 +1,1 @@
-tar: avahi-tqt name=avahi-tqt-14.1.3
+tar: . name=avahi-tqt-14.1.3
