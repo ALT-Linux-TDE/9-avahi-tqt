@@ -202,7 +202,7 @@ into a TQt main loop application.
 
 %prep
 #%setup -n %name-%tde_version%{?preversion:~%preversion}
-%setup -q %name
+%setup -q avahi-tqt
 
 
 %build
