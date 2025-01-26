@@ -40,7 +40,7 @@ License: LGPL-2.0+
 #Vendor:		Trinity Project
 #Packager:	Francois Andriot <francois.andriot@free.fr>
 
-Source: avahi-tqt.tar.gz
+Source: avahi-tqt-14.1.3.tar.gz
 
 BuildRequires: libtqt4-devel >= %tde_version
 
