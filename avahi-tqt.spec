@@ -201,7 +201,8 @@ into a TQt main loop application.
 ##########
 
 %prep
-%setup -n %name-%tde_version%{?preversion:~%preversion}
+#%setup -n %name-%tde_version%{?preversion:~%preversion}
+%setup -n avahi-tqt
 
 %build
 unset QTDIR QTINC QTLIB
