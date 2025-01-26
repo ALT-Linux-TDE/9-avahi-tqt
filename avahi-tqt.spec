@@ -28,9 +28,9 @@
 %endif
 
 Name: tde-avahi-tqt
-Epoch: %tde_epoch
+#Epoch: %tde_epoch
 Version: 0.6.30
-Release: %{?tde_version}_%{?!preversion:1}%{?preversion:0_%preversion}%{?dist}
+Release: 14.1.3-alt1
 Summary: Avahi TQt integration library
 Group: System/Libraries
 Url: http://www.trinitydesktop.org/
@@ -44,6 +44,7 @@ Source0: avahi-tqt.tar.gz
 
 BuildRequires: libtqt4-devel >= %tde_version
 
+BuildRequires: tde-rpm-macros
 BuildRequires: tde-cmake >= %tde_version
 BuildRequires: gcc-c++
 BuildRequires: pkg-config
@@ -56,64 +57,25 @@ BuildRequires: glib2-devel
 BuildRequires: gettext-devel
 
 # Xi support
-%if 0%{?rhel} == 4
-BuildRequires: xorg-x11-devel
-%endif
-%if 0%{?mgaversion} || 0%{?mdkversion}
-BuildRequires: %{_lib}xi-devel
-%endif
-%if 0%{?suse_version} >= 1220 || 0%{?rhel} >= 5 || 0%{?fedora}
-BuildRequires: libXi-devel
-%endif
-%if 0%{?suse_version} == 1140
-BuildRequires: libXi6-devel
-%endif
+BuildRequires: libX11-devel
 
 # DBUS support
-%if 0%{?suse_version}
-BuildRequires: dbus-1-devel
-%endif
-%if 0%{?rhel} || 0%{?fedora} || 0%{?mgaversion} || 0%{?mdkversion}
-BuildRequires: dbus-devel
-%endif
+BuildRequires: libdbus-devel
 
 # PCAP support
-%if 0%{?mgaversion} || 0%{?mdkversion}
-BuildRequires: %{_lib}cap-devel
-%else
 BuildRequires: libcap-devel
-%endif
 
 # AVAHI support
-%if 0%{?mgaversion} || 0%{?mdkversion}
-%define avahi_devel %{_lib}avahi-client-devel
-%endif
-%if 0%{?suse_version} || 0%{?rhel} || 0%{?fedora}
-%define avahi_devel avahi-devel
-%endif
-%{?avahi_devel:BuildRequires: %avahi_devel}
+BuildRequires: libavahi-devel
 
 # EXPAT support
-%if 0%{?rhel} || 0%{?fedora}
-BuildRequires: expat-devel
-%endif
-%if 0%{?suse_version}
 BuildRequires: libexpat-devel
-%endif
-%if 0%{?mdkversion} || 0%{?mgaversion}
-BuildRequires: %{_lib}expat-devel
-%endif
 
 # NAS support
-%if 0%{?fedora} || 0%{?mgaversion} || 0%{?mdkversion}
-%define with_nas 1
-BuildRequires: nas-devel
-%endif
+BuildRequires: libaudio-devel
 
 # XT support
-%if 0%{?rhel} || 0%{?fedora} || 0%{?suse_version}
 BuildRequires: libXt-devel
-%endif
 
 %description
 Avahi is a fully LGPL framework for Multicast DNS Service Discovery.
