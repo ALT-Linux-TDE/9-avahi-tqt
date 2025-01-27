@@ -1,2 +1,1 @@
-tar: . name=tde-avahi-tqt
-spec: avahi-tqt.spec
+tar.gz: tde-avahi-tqt name=tde-avahi-tqt

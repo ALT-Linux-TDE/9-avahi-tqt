@@ -40,7 +40,7 @@ License: LGPL-2.0+
 #Vendor:		Trinity Project
 #Packager:	Francois Andriot <francois.andriot@free.fr>
 
-Source0: tde-avahi-tqt.tar
+Source0: tde-avahi-tqt.tar.gz
 
 BuildRequires: libtqt4-devel >= %tde_version
 
