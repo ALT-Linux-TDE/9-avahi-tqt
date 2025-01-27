@@ -1,2 +1,2 @@
-tar: avahi-tqt name=avahi-tqt
+tar: . name=tde-avahi-tqt
 spec: avahi-tqt.spec
