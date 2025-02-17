@@ -21,6 +21,7 @@ Url: http://www.trinitydesktop.org/
 
 Source0: %name.tar.gz
 
+BuildRequires(pre): cmake
 BuildRequires: tde-rpm-macros
 BuildRequires: tde-cmake >= %tde_version
 BuildRequires: gcc-c++
@@ -89,41 +90,24 @@ into a TQt main loop application.
 ##########
 
 %prep
-%setup -q -n %name
+%setup -n %name
+mkdir build
 
 %build
-unset QTDIR QTINC QTLIB
-
-#if ! rpm -E %%cmake|grep -e 'cd build\|cd ${CMAKE_BUILD_DIR:-build}'; then
-#  %__mkdir_p build
-#  cd build
-#fi
-
-
-#mkdir /tmp/avahi-tqt.build
-#cd /tmp/avahi-tqt.build
-#cmake /usr/src/RPM/BUILD/tde-avahi-tqt [arguments...]
-
-%cmake \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DCMAKE_C_FLAGS="%optflags" \
-  -DCMAKE_CXX_FLAGS="%optflags" \
-  -DCMAKE_SKIP_RPATH=ON \
-  -DCMAKE_VERBOSE_MAKEFILE=ON \
-  -DWITH_GCC_VISIBILITY=OFF \
-  -DLIB_INSTALL_DIR=%_libdir
-
-#%cmake_insource
-rm /usr/src/RPM/BUILD/tde-avahi-tqt/CMakeCache.txt
+mkdir -p build
+cd build
+%cmake ..
 %cmake_build
 
 %install
-#rm -rf %buildroot
-#make install -C build
-%cmakeinstall_std
+mkdir -p %buildroot%_libdir
+%cmake_install DESTDIR=%buildroot
 
 %files
-%doc README AUTHORS COPYING
+%doc README AUTHORS
+%_libdir/libavahi-tqt.so*
+%_includedir/avahi-tqt/
+%_pkgconfigdir/avahi-tqt.pc
 
 %changelog
 * Sun Jan 26 2025 Petr Akhlamov <ahlamovpm@basealt.ru> 2:%version-%release
