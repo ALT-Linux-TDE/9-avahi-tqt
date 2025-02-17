@@ -99,8 +99,9 @@ cd build
 %cmake_build
 
 %install
-#mkdir -p %buildroot%{_libdir}
-cmake --install build/x86_64-alt-linux --prefix=%buildroot%{_prefix}
+#1 mkdir -p %buildroot%{_libdir}
+#2 cmake --install build/x86_64-alt-linux --prefix=%buildroot%{_prefix}
+%__make install DESTDIR=%{?buildroot} -C build
 
 %files
 %doc README AUTHORS
