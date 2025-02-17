@@ -113,7 +113,7 @@ unset QTDIR QTINC QTLIB
 %install
 rm -rf %buildroot
 #make install -C build
-%cmkeinstall_std
+%cmakeinstall_std
 
 %files
 %doc README AUTHORS COPYING
