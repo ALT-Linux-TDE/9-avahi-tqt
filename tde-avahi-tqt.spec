@@ -99,7 +99,7 @@ cd build
 %cmake_build
 
 %install
-%make_install DESTDIR=%{?buildroot}" -C build
+%make_install DESTDIR="%{?buildroot}" -C build
 
 %files
 %doc README AUTHORS
