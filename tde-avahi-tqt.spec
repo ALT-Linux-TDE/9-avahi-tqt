@@ -99,7 +99,7 @@ unset QTDIR QTINC QTLIB
 #  cd build
 #fi
 
-rm /usr/src/RPM/BUILD/tde-avahi-tqt/CMakeCache.txt
+#rm /usr/src/RPM/BUILD/tde-avahi-tqt/CMakeCache.txt
 mkdir /tmp/avahi-tqt.build
 cd /tmp/avahi-tqt.build
 #cmake /usr/src/RPM/BUILD/tde-avahi-tqt [arguments...]
