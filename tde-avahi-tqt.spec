@@ -95,8 +95,8 @@ into a TQt main loop application.
 unset QTDIR QTINC QTLIB
 
 #подсказка ns
-#mkdir -p build
-#cd build
+mkdir -p build
+cd build
 
 %cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
