@@ -100,7 +100,7 @@ cd build
 
 %install
 mkdir -p %buildroot%{_libdir}
-cd %buildroot%_libdir
+cd %buildroot%{_libdir}
 %cmake --install --prefix=%buildroot%{_prefix}
 
 %files
