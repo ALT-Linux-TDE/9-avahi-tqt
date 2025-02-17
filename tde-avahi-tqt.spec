@@ -107,11 +107,11 @@ unset QTDIR QTINC QTLIB
   -DWITH_GCC_VISIBILITY=OFF \
   -DLIB_INSTALL_DIR=%_libdir
 
-%make_build
+make
 
 %install
 rm -rf %buildroot
-%makeinstall_std -C build
+make install -C build
 
 %files
 %doc README AUTHORS COPYING
