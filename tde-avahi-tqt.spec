@@ -99,9 +99,9 @@ unset QTDIR QTINC QTLIB
 #  cd build
 #fi
 
-#rm /usr/src/RPM/BUILD/tde-avahi-tqt/CMakeCache.txt
-mkdir /tmp/avahi-tqt.build
-cd /tmp/avahi-tqt.build
+
+#mkdir /tmp/avahi-tqt.build
+#cd /tmp/avahi-tqt.build
 #cmake /usr/src/RPM/BUILD/tde-avahi-tqt [arguments...]
 
 %cmake \
@@ -112,6 +112,8 @@ cd /tmp/avahi-tqt.build
   -DCMAKE_VERBOSE_MAKEFILE=ON \
   -DWITH_GCC_VISIBILITY=OFF \
   -DLIB_INSTALL_DIR=%_libdir
+
+rm /usr/src/RPM/BUILD/tde-avahi-tqt/CMakeCache.txt
 
 %cmake_insource
 %cmake_build
