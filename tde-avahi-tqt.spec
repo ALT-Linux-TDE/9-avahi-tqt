@@ -99,9 +99,8 @@ cd build
 %cmake_build
 
 %install
-mkdir -p %{?buildroot}
+mkdir -p %buildroot
 %make_install DESTDIR="%buildroot%{_prefix}" -C build/x86_64-alt-linux
-
 
 %files
 %_libdir/libavahi-tqt.so*
