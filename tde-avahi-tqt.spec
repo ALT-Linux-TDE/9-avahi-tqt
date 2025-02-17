@@ -104,7 +104,6 @@ mkdir -p %{?buildroot}
 
 
 %files
-%doc README AUTHORS
 %_libdir/libavahi-tqt.so*
 %_includedir/avahi-tqt/
 %_pkgconfigdir/avahi-tqt.pc
