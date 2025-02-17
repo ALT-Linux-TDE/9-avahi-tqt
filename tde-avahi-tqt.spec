@@ -100,7 +100,7 @@ cd build
 
 %install
 mkdir -p %{?buildroot}
-%make_install DESTDIR="%buildroot" -C build/x86_64-alt-linux
+%make_install DESTDIR="%buildroot%{_prefix}" -C build/x86_64-alt-linux
 
 
 %files
