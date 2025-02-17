@@ -100,8 +100,8 @@ cd build
 
 %install
 mkdir -p %{?buildroot}
-#cd "%{?buildroot}/%_target"
-cd "%{?buildroot}/x86_64-alt-linux"
+cd "%{?buildroot}/%_target"
+#cd "%{?buildroot}/x86_64-alt-linux"
 %make_install
 
 %files
