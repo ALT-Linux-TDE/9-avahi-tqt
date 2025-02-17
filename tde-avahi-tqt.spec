@@ -100,7 +100,7 @@ cd build
 
 %install
 mkdir -p %buildroot%{_libdir}
-%cmake --install build --prefix=%buildroot%{_prefix}
+cmake --install build --prefix=%buildroot%{_prefix}
 
 %files
 %doc README AUTHORS
