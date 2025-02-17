@@ -94,6 +94,11 @@ into a TQt main loop application.
 %build
 unset QTDIR QTINC QTLIB
 
+if ! rpm -E %%cmake|grep -e 'cd build\|cd ${CMAKE_BUILD_DIR:-build}'; then
+  %__mkdir_p build
+  cd build
+fi
+
 %cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_C_FLAGS="%optflags" \
@@ -107,12 +112,8 @@ unset QTDIR QTINC QTLIB
 %cmake_build
 
 %install
-rm -rf %buildroot
+#rm -rf %buildroot
 #make install -C build
-rm /usr/src/RPM/BUILD/tde-avahi-tqt/CMakeCache.txt
-mkdir /tmp/avahi-tqt.build
-cd /tmp/avahi-tqt.build
-cmake /usr/src/RPM/BUILD/tde-avahi-tqt
 %cmakeinstall_std
 
 %files
