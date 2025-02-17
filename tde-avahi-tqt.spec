@@ -99,6 +99,7 @@ cd build
 %cmake_build
 
 %install
+mkdir -p %{?buildroot}
 %make_install DESTDIR="%{?buildroot}" -C build
 
 %files
