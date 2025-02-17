@@ -95,12 +95,13 @@ mkdir build
 
 %build
 cd build
-%cmake .. -DCMAKE_INSTALL_PREFIX=%buildroot%{_prefix} -DCMAKE_VERBOSE_MAKEFILE=ON
+%cmake .. -DCMAKE_INSTALL_PREFIX=%buildroot%{_prefix}
 %cmake_build
 
 %install
-cd build
-%make_install
+mkdir -p %buildroot%{_libdir}
+cd %buildroot%_libdir
+%cmake --install build --prefix=%buildroot%{_prefix}
 
 %files
 %doc README AUTHORS
