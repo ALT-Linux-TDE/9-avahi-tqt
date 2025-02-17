@@ -94,11 +94,6 @@ into a TQt main loop application.
 %build
 unset QTDIR QTINC QTLIB
 
-if ! rpm -E %%cmake|grep -e 'cd build\|cd ${CMAKE_BUILD_DIR:-build}'; then
-  %__mkdir_p build
-  cd build
-fi
-
 %cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_C_FLAGS="%optflags" \
