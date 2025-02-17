@@ -101,7 +101,7 @@ cd build
 %install
 mkdir -p %{?buildroot}
 cd "%{?buildroot}/%_target"
-%make_install DESTDIR="%{?buildroot}" -C build
+%make_install
 
 %files
 %doc README AUTHORS
