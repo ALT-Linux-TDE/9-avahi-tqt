@@ -113,7 +113,7 @@ unset QTDIR QTINC QTLIB
   -DWITH_GCC_VISIBILITY=OFF \
   -DLIB_INSTALL_DIR=%_libdir
 
-%cmake_insource
+#%cmake_insource
 rm /usr/src/RPM/BUILD/tde-avahi-tqt/CMakeCache.txt
 %cmake_build
 
