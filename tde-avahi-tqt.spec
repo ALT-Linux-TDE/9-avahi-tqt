@@ -102,7 +102,7 @@ cd build
 mkdir -p %{?buildroot}
 cd "%{?buildroot}/%_target"
 #cd "%{?buildroot}/x86_64-alt-linux"
-%make_install
+%make_install DESTDIR="%{?buildroot}" -C build
 
 %files
 %doc README AUTHORS
