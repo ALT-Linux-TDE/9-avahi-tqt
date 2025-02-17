@@ -99,9 +99,8 @@ cd build
 %cmake_build
 
 %install
-mkdir -p %buildroot%{_libdir}
-#cd %buildroot%_libdir
-%cmake --install build --prefix=%buildroot%{_prefix}
+cd build
+make install DESTDIR=%buildroot
 
 %files
 %doc README AUTHORS
