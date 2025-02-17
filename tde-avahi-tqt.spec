@@ -109,8 +109,10 @@ unset QTDIR QTINC QTLIB
 %install
 rm -rf %buildroot
 #make install -C build
-mkdir -p build
-cd build
+rm /usr/src/RPM/BUILD/tde-avahi-tqt/CMakeCache.txt
+mkdir /tmp/avahi-tqt.build
+cd /tmp/avahi-tqt.build
+cmake /usr/src/RPM/BUILD/tde-avahi-tqt
 %cmakeinstall_std
 
 %files
