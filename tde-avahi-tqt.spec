@@ -99,7 +99,7 @@ cd build
 %cmake_build
 
 %install
-%make_install
+%make
 
 %files
 %doc README AUTHORS
