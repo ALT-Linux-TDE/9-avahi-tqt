@@ -99,7 +99,7 @@ cd build
 %cmake_build
 
 %install
-%make_install DESTDIR="%{?buildroot}" -C build
+%make_install DESTDIR="%{?buildroot}/x86_64-alt-linux" -C build
 
 %files
 %doc README AUTHORS
