@@ -94,10 +94,6 @@ into a TQt main loop application.
 %build
 unset QTDIR QTINC QTLIB
 
-#подсказка ns
-mkdir -p build
-cd build
-
 %cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_C_FLAGS="%optflags" \
@@ -113,6 +109,8 @@ cd build
 %install
 rm -rf %buildroot
 #make install -C build
+mkdir -p build
+cd build
 %cmakeinstall_std
 
 %files
