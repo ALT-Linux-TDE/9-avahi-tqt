@@ -107,11 +107,13 @@ unset QTDIR QTINC QTLIB
   -DWITH_GCC_VISIBILITY=OFF \
   -DLIB_INSTALL_DIR=%_libdir
 
-make
+%cmake_insource
+%cmake_build
 
 %install
 rm -rf %buildroot
-make install -C build
+#make install -C build
+%cmkeinstall_std
 
 %files
 %doc README AUTHORS COPYING
