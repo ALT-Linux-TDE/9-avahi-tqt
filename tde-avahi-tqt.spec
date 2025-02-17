@@ -96,12 +96,12 @@ mkdir build
 %build
 mkdir -p build
 cd build
-%cmake ..
+%cmake .. -DCMAKE_INSTALL_PREFIX=%buildroot%{_prefix}
 %cmake_build
 
 %install
 mkdir -p %buildroot%_libdir
-%cmake_install DESTDIR=%buildroot
+%cmake_install
 
 %files
 %doc README AUTHORS
