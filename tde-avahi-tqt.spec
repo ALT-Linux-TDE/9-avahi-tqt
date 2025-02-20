@@ -94,7 +94,7 @@ into a TQt main loop application.
 %setup -n %name
 
 %build
-ls -l $RPM_BUILD_ROOT
+#ls -l $RPM_BUILD_ROOT
 RPM_BUILD_ROOT=/usr/src/RPM/BUILD
 %cmake .. -DBIN_INSTALL_DIR=%_bindir \
   -DINCLUDE_INSTALL_DIR=%_includedir \
