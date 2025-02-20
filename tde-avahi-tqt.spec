@@ -64,7 +64,8 @@ into a TQt main loop application.
 %postun -n libavahi-tqt1 -p /sbin/ldconfig
 
 %files -n libavahi-tqt1
-%_libdir/libavahi-tqt.so.1*
+%_libdir/libavahi-tqt.so.1
+%_libdir/libavahi-tqt.so.1.0.0
 
 ##########
 
@@ -84,7 +85,7 @@ into a TQt main loop application.
 
 %files -n libavahi-tqt-devel
 %_includedir/avahi-tqt/
-%_libdir/libavahi-tqt.*
+%_libdir/libavahi-tqt.so
 %_pkgconfigdir/avahi-tqt.pc
 
 ##########
@@ -94,17 +95,58 @@ into a TQt main loop application.
 mkdir build
 
 %build
+#V Реш2
+#export LD_LIBRARY_PATH=%_builddir/%name/build/x86_64-alt-linux/avahi-tqt:$LD_LIBRARY_PATH
 cd build
-%cmake .. -DCMAKE_INSTALL_PREFIX=%buildroot%{_prefix} -DCMAKE_VERBOSE_MAKEFILE=ON
+#VБыло
+#%cmake .. -DCMAKE_INSTALL_PREFIX=%buildroot%{_prefix} -DCMAKE_VERBOSE_MAKEFILE=ON
+ls -l $RPM_BUILD_ROOT
+#VБыло
+#%cmake .. -DCMAKE_INSTALL_PREFIX=%_prefix -DCMAKE_INSTALL_LIBDIR=%_libdir -DCMAKE_VERBOSE_MAKEFILE=ON
+#%сmake install DESTDIR=$RPM_BUILD_ROOT -C build 
+
+%сmake
+  -DBIN_INSTALL_DIR=%_bindir \
+  -DINCLUDE_INSTALL_DIR=%_includedir \
+  -DLIB_INSTALL_DIR=%_libdir \
 %cmake_build
 
 %install
-mkdir -p %buildroot
-%make_install DESTDIR="%buildroot%{_prefix}" -C build/x86_64-alt-linux
+#VБыло
+#mkdir -p %buildroot%_libdir
+#mkdir -p %buildroot%_includedir
+#mkdir -p %buildroot%_pkgconfigdir
+mkdir -p %{buildroot}%{_prefix}
+mkdir -p %{buildroot}%{_includedir}
+mkdir -p %{buildroot}%{_libdir}
+#VБыло
+#%make_install DESTDIR="%buildroot%{_prefix}" -C build/x86_64-alt-linux
+#%make_install DESTDIR="%buildroot" -C build
 
-%files
-%_libdir/libavahi-tqt.so*
+# Проверяем, что библиотеки попали в %_libdir
+if [ ! -f "%buildroot%_libdir/libavahi-tqt.so.1" ]; then
+    echo "Ошибка: библиотека не скопировалась в %_libdir" >&2
+	esle
+    echo "Внимание!: библиотека скопировалась в %_libdir"
+    exit 1
+fi
+#--1export CMAKE_INSTALL_PREFIX=%{buildroot}/usr
+#--1%cmake -DCMAKE_INSTALL_PREFIX=%{buildroot}/usr
+%__make install DESTDIR="%{?buildroot}" -C build
+# Копируем библиотеки в правильное место
+install -m 755 build/x86_64-alt-linux/avahi-tqt/libavahi-tqt.so %buildroot%_libdir/
+install -m 755 build/x86_64-alt-linux/avahi-tqt/libavahi-tqt.so.1 %buildroot%_libdir/
+install -m 755 build/x86_64-alt-linux/avahi-tqt/libavahi-tqt.so.1.0.0 %buildroot%_libdir/
+# Копируем pkg-config файл
+install -m 644 build/x86_64-alt-linux/avahi-tqt.pc %buildroot%_pkgconfigdir/
+
+%files -n libavahi-tqt1
+%_libdir/libavahi-tqt.so.1
+%_libdir/libavahi-tqt.so.1.0.0
+
+%files -n libavahi-tqt-devel
 %_includedir/avahi-tqt/
+%_libdir/libavahi-tqt.so
 %_pkgconfigdir/avahi-tqt.pc
 
 %changelog
