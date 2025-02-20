@@ -95,20 +95,12 @@ into a TQt main loop application.
 mkdir build
 
 %build
-#V Реш2
-#export LD_LIBRARY_PATH=%_builddir/%name/build/x86_64-alt-linux/avahi-tqt:$LD_LIBRARY_PATH
 cd build
-#VБыло
-#%cmake .. -DCMAKE_INSTALL_PREFIX=%buildroot%{_prefix} -DCMAKE_VERBOSE_MAKEFILE=ON
 ls -l $RPM_BUILD_ROOT
-#VБыло
-#%cmake .. -DCMAKE_INSTALL_PREFIX=%_prefix -DCMAKE_INSTALL_LIBDIR=%_libdir -DCMAKE_VERBOSE_MAKEFILE=ON
-#%сmake install DESTDIR=$RPM_BUILD_ROOT -C build 
-
-%сmake
-  -DBIN_INSTALL_DIR=%_bindir \
+%cmake .. -DBIN_INSTALL_DIR=%_bindir \
   -DINCLUDE_INSTALL_DIR=%_includedir \
   -DLIB_INSTALL_DIR=%_libdir \
+  -DCMAKE_VERBOSE_MAKEFILE=ON
 %cmake_build
 
 %install
