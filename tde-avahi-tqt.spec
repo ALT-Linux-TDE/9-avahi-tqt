@@ -132,15 +132,6 @@ install -m 755 build/x86_64-alt-linux/avahi-tqt/libavahi-tqt.so.1.0.0 %buildroot
 # Копируем pkg-config файл
 install -m 644 build/x86_64-alt-linux/avahi-tqt.pc %buildroot%_pkgconfigdir/
 
-%files -n libavahi-tqt1
-%_libdir/libavahi-tqt.so.1
-%_libdir/libavahi-tqt.so.1.0.0
-
-%files -n libavahi-tqt-devel
-%_includedir/avahi-tqt/
-%_libdir/libavahi-tqt.so
-%_pkgconfigdir/avahi-tqt.pc
-
 %changelog
 * Sun Jan 26 2025 Petr Akhlamov <ahlamovpm@basealt.ru> 2:%version-%release
 - Initial build for ALT Sisyphus
