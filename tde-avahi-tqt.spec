@@ -117,7 +117,7 @@ mkdir -p %{buildroot}%{_libdir}
 # Проверяем, что библиотеки попали в %_libdir
 if [ ! -f "%buildroot%_libdir/libavahi-tqt.so.1" ]; then
     echo "Ошибка: библиотека не скопировалась в %_libdir" >&2
-	esle
+	else
     echo "Внимание!: библиотека скопировалась в %_libdir"
     exit 1
 fi
