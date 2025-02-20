@@ -92,10 +92,8 @@ into a TQt main loop application.
 
 %prep
 %setup -n %name
-mkdir build
 
 %build
-cd build
 ls -l $RPM_BUILD_ROOT
 %cmake .. -DBIN_INSTALL_DIR=%_bindir \
   -DINCLUDE_INSTALL_DIR=%_includedir \
