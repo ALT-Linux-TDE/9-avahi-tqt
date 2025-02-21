@@ -92,6 +92,9 @@ into a TQt main loop application.
 
 %prep
 %setup -n %name
+mkdir -p %{buildroot}%{_prefix}
+mkdir -p %{buildroot}%{_includedir}
+mkdir -p %{buildroot}%{_libdir}
 
 %build
 #ls -l $RPM_BUILD_ROOT
