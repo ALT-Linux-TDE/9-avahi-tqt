@@ -100,7 +100,7 @@ mkdir -p %buildroot%_libdir
 
 pwd
 echo "Проверяем, есть ли путь на данном месте (для patch)"
-ls -l tde-avahi-tqt/CMakeLists.txt
+ls -l CMakeLists.txt
 %patch0 -p1
 
 %build
