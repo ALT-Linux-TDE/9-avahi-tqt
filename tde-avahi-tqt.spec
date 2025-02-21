@@ -20,6 +20,7 @@ License: LGPL-2.0+
 Url: http://www.trinitydesktop.org/
 
 Source0: %name.tar.gz
+Patch1: libraries_path.patch
 
 BuildRequires(pre): cmake
 BuildRequires: tde-rpm-macros
@@ -96,6 +97,7 @@ mkdir -p %buildroot%_prefix
 mkdir -p %buildroot%_includedir
 mkdir -p %buildroot%_libdir
 mkdir -p %{buildroot}%{_includedir}
+%patch1 -p1
 
 #V=+
 echo "Путь %_libdir это:"
