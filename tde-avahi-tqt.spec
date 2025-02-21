@@ -38,7 +38,7 @@ BuildRequires: libexpat-devel
 BuildRequires: libaudio-devel
 BuildRequires: libXt-devel
 
-Patch1: libraries_path.patch
+Patch0: libraries_path.patch
 
 %description
 Avahi is a fully LGPL framework for Multicast DNS Service Discovery.
@@ -94,7 +94,6 @@ into a TQt main loop application.
 
 %prep
 %setup -n %name
-%patch1 -p1
 mkdir -p %buildroot%_prefix
 mkdir -p %buildroot%_includedir
 mkdir -p %buildroot%_libdir
@@ -109,6 +108,8 @@ echo %_includedir
 
 echo %buildroot%_includedir
 echo %{buildroot}%{_includedir}
+
+%patch1 -p1
 
 %build
 #ls -l $RPM_BUILD_ROOT
