@@ -111,7 +111,7 @@ echo %{buildroot}%{_includedir}
 
 echo "Проверяем, есть ли путь на данном месте (для patch)"
 ls -l tde-avahi-tqt/CMakeLists.txt
-%patch0 -p2
+%patch0 -p1
 
 %build
 #ls -l $RPM_BUILD_ROOT
