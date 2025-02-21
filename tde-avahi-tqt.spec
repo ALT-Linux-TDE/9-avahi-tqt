@@ -97,6 +97,7 @@ into a TQt main loop application.
 #ls -l $RPM_BUILD_ROOT
 RPM_BUILD_ROOT=/usr/src/RPM/BUILD
 %cmake .. -DBIN_INSTALL_DIR=%_bindir \
+  -DCMAKE_INSTALL_PREFIX=/usr
   -DINCLUDE_INSTALL_DIR=%_includedir \
   -DLIB_INSTALL_DIR=%_libdir \
   -DCMAKE_VERBOSE_MAKEFILE=ON
@@ -121,8 +122,9 @@ if [ ! -f "%buildroot%_libdir/libavahi-tqt.so.1" ]; then
     echo "Внимание!: библиотека скопировалась в %_libdir"
     exit 1
 fi
-#--1export CMAKE_INSTALL_PREFIX=%{buildroot}/usr
-#--1%cmake -DCMAKE_INSTALL_PREFIX=%{buildroot}/usr
+
+export CMAKE_INSTALL_PREFIX=%{buildroot}/usr
+%cmake -DCMAKE_INSTALL_PREFIX=%{buildroot}/usr
 %__make install DESTDIR="%{?buildroot}" -C build
 # Копируем библиотеки в правильное место
 install -m 755 build/x86_64-alt-linux/avahi-tqt/libavahi-tqt.so %buildroot%_libdir/
