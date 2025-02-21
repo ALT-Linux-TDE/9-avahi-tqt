@@ -1,0 +1,44 @@
+diff --git a/tde-avahi-tqt/CMakeLists.txt b/tde-avahi-tqt/CMakeLists.txt
+index 6816cd0..fe87d65 100644
+--- a/tde-avahi-tqt/CMakeLists.txt
++++ b/tde-avahi-tqt/CMakeLists.txt
+@@ -40,6 +40,8 @@ include( TDEMacros )
+ include( TDESetupPaths )
+ tde_setup_paths( )
+ 
++# Явно указываем путь для установки библиотек
++set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib64)
+ 
+ ##### optional stuff
+ 
+@@ -67,7 +69,7 @@ if( NOT EXISTS ${MOC_TQT_SCRIPT} )
+ endif( NOT EXISTS ${MOC_TQT_SCRIPT} )
+ 
+ message( STATUS "Checking for avahi-common library" )
+-find_library( AVAHI_COMMON NAMES avahi-common )
++find_library( AVAHI_COMMON NAMES avahi-common PATHS ${CMAKE_INSTALL_PREFIX}/lib64 ${CMAKE_INSTALL_PREFIX}/lib 
+ if( NOT AVAHI_COMMON )
+   tde_message_fatal( "avahi-common library are required, but not found on your system" )
+ endif( )
+diff --git a/tde-avahi-tqt/avahi-tqt/CMakeLists.txt b/tde-avahi-tqt/avahi-tqt/CMakeLists.txt
+index 64c5b35..1031677 100644
+--- a/tde-avahi-tqt/avahi-tqt/CMakeLists.txt
++++ b/tde-avahi-tqt/avahi-tqt/CMakeLists.txt
+@@ -33,12 +33,17 @@ tde_add_library(
+   DESTINATION ${LIB_INSTALL_DIR}
+ )
+ 
++# Добавляем явную линковку для избежания ошибок
++target_link_libraries(${target} PRIVATE ${AVAHI_COMMON} ${TQT_LIBRARIES})
++
+ tde_add_library(
+   ${target} STATIC_PIC
+   SOURCES qt-watch.cpp
+   LINK ${AVAHI_COMMON} ${TQT_LIBRARIES}
+   DESTINATION ${LIB_INSTALL_DIR}
+ )
++# Добавляем явную линковку для избежания ошибок
++target_link_libraries(${target} PRIVATE ${AVAHI_COMMON} ${TQT_LIBRARIES})
+ 
+ add_custom_command(
+   OUTPUT
