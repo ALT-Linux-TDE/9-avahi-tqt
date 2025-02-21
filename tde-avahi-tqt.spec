@@ -109,7 +109,7 @@ echo %_includedir
 echo %buildroot%_includedir
 echo %{buildroot}%{_includedir}
 
-%patch1 -p1
+%patch0 -p1
 
 %build
 #ls -l $RPM_BUILD_ROOT
