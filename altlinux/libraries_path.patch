@@ -16,7 +16,7 @@ index 6816cd0..fe87d65 100644
  
  message( STATUS "Checking for avahi-common library" )
 -find_library( AVAHI_COMMON NAMES avahi-common )
-+find_library( AVAHI_COMMON NAMES avahi-common PATHS ${CMAKE_INSTALL_PREFIX}/lib64 ${CMAKE_INSTALL_PREFIX}/lib 
++find_library( AVAHI_COMMON NAMES avahi-common PATHS ${CMAKE_INSTALL_PREFIX}/lib64 ${CMAKE_INSTALL_PREFIX}/lib)
  if( NOT AVAHI_COMMON )
    tde_message_fatal( "avahi-common library are required, but not found on your system" )
  endif( )
