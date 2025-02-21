@@ -92,9 +92,9 @@ into a TQt main loop application.
 
 %prep
 %setup -n %name
-mkdir -p %{buildroot}%{_prefix}
-mkdir -p %{buildroot}%{_includedir}
-mkdir -p %{buildroot}%{_libdir}
+mkdir -p %buildroot%_prefix
+mkdir -p %buildroot%_includedir
+mkdir -p %buildroot%_libdir
 
 echo "Путь %libdir это:"
 echo %libdir
