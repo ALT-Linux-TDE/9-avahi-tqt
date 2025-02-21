@@ -96,6 +96,11 @@ mkdir -p %{buildroot}%{_prefix}
 mkdir -p %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_libdir}
 
+echo "Путь %libdir это:"
+echo %libdir
+echo "Путь %_libdir это:"
+echo %_libdir
+
 %build
 #ls -l $RPM_BUILD_ROOT
 RPM_BUILD_ROOT=/usr/src/RPM/BUILD
