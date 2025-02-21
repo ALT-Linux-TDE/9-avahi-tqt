@@ -102,7 +102,7 @@ RPM_BUILD_ROOT=/usr/src/RPM/BUILD
 %cmake .. -DBIN_INSTALL_DIR=%_bindir \
   -DCMAKE_INSTALL_PREFIX=/usr
 #  -DINCLUDE_INSTALL_DIR=%_includedir \
-  -DLIB_INSTALL_DIR=%_libdir \
+  -DLIB_INSTALL_DIR=%{_libdir} \
   -DCMAKE_VERBOSE_MAKEFILE=ON
 %cmake_build
 
