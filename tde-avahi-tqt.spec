@@ -97,7 +97,7 @@ mkdir -p %buildroot%_prefix
 mkdir -p %buildroot%_includedir
 mkdir -p %buildroot%_libdir
 mkdir -p %{buildroot}%{_includedir}
-%patch1 -p1
+%patch1 -p0
 
 #V=+
 echo "Путь %_libdir это:"
