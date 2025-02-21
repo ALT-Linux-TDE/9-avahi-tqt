@@ -97,18 +97,8 @@ into a TQt main loop application.
 mkdir -p %buildroot%_prefix
 mkdir -p %buildroot%_includedir
 mkdir -p %buildroot%_libdir
-mkdir -p %{buildroot}%{_includedir}
 
-#V=+
-echo "Путь %_libdir это:"
-echo %_libdir
-
-echo "Путь %_includedir это:"
-echo %_includedir
-
-echo %buildroot%_includedir
-echo %{buildroot}%{_includedir}
-
+pwd
 echo "Проверяем, есть ли путь на данном месте (для patch)"
 ls -l tde-avahi-tqt/CMakeLists.txt
 %patch0 -p1
