@@ -1,3 +1,2 @@
 tar.gz: tde-avahi-tqt name=tde-avahi-tqt
-copy: tde-avahi-tqt/avahi-tqt/*
-copy: altlinux/libraries_path.patch
+copy: altlinux/*.patch
