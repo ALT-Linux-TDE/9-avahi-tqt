@@ -98,6 +98,7 @@ mkdir -p %{buildroot}%{_libdir}
 
 echo "Путь %libdir это:"
 echo %libdir
+#^=- V=+
 echo "Путь %_libdir это:"
 echo %_libdir
 
@@ -105,10 +106,15 @@ echo %_libdir
 #ls -l $RPM_BUILD_ROOT
 RPM_BUILD_ROOT=/usr/src/RPM/BUILD
 %cmake .. -DBIN_INSTALL_DIR=%_bindir \
-  -DCMAKE_INSTALL_PREFIX=/usr
-#  -DINCLUDE_INSTALL_DIR=%_includedir \
-  -DLIB_INSTALL_DIR=%{_libdir} \
+  -DCMAKE_INSTALL_PREFIX=%prefix
+  -DINCLUDE_INSTALL_DIR:PATH=%_includedir \
+  -DLIB_INSTALL_DIR:PATH=%_libdir \
   -DCMAKE_VERBOSE_MAKEFILE=ON
+  %if "%_lib" == "lib64"
+  -DLIB_SUFFIX="64" \
+  %else
+  -DLIB_SUFFIX="" \
+  %endif
 %cmake_build
 
 %install
