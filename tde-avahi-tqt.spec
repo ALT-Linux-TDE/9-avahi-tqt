@@ -39,6 +39,7 @@ BuildRequires: libaudio-devel
 BuildRequires: libXt-devel
 
 Patch0: libraries_path.patch
+Patch1: library_types.patch
 
 %description
 Avahi is a fully LGPL framework for Multicast DNS Service Discovery.
@@ -102,6 +103,7 @@ pwd
 echo "Проверяем, есть ли путь на данном месте (для patch)"
 ls -l CMakeLists.txt
 %patch0 -p1
+%patch1 -p1
 
 %build
 #ls -l $RPM_BUILD_ROOT
