@@ -26,7 +26,7 @@ link_directories(
 set( target avahi-tqt )
 
 tde_add_library(
-  ${target}_shared SHARED
+  ${target} SHARED
   VERSION 1.0.0
   SOURCES qt-watch.cpp
   LINK ${AVAHI_COMMON} ${TQT_LIBRARIES}
@@ -34,15 +34,11 @@ tde_add_library(
 )
 
 tde_add_library(
-  ${target}_static STATIC_PIC
+  ${target} STATIC_PIC
   SOURCES qt-watch.cpp
   LINK ${AVAHI_COMMON} ${TQT_LIBRARIES}
   DESTINATION ${LIB_INSTALL_DIR}
 )
-
-# Линкуем библиотеки
-target_link_libraries(${target}_shared PRIVATE ${AVAHI_COMMON} ${TQT_LIBRARIES})
-target_link_libraries(${target}_static PRIVATE ${AVAHI_COMMON} ${TQT_LIBRARIES})
 
 add_custom_command(
   OUTPUT
